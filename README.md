@@ -193,5 +193,6 @@ This applies the plan and moves the `terraform.tfstate` to the S3 bucket.
 In order to destroy the bucket, we need to first delete the object (state file) inside the bucket manually and then we can delete the bucket.
 
 ---
-Prepared By: Pravash
-Last Updated: April 2025
+> Prepared By: Pravash
+
+> Last Updated: April 2025
