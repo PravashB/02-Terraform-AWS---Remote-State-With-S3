@@ -1,6 +1,6 @@
 # 02-Terraform-AWS---Remote-State-S3
 ![alt text](/Images/Pravash_Logo_Small.png)
-## 🎯 Objective
+## Objective
 In this Lab, I'll teach you:
 > - Create an S3 Bucket using Terraform
 > - Configure Terraform backend to store the state file remotely in that S3 bucket
@@ -10,7 +10,7 @@ Before We start, Let's first understand what is a state file & why do we need to
 
 The **core** to Terraform's functionality is the concept of **"state"** - a critical component that tracks the state of our infrastructure and configuration.
 
-## 🔬 Understanding Terraform State
+## Understanding Terraform State
 Terraform state is a JSON file that Terraform generates automatically during the terraform apply command. This file contains vital information about the resources Terraform creates, allowing Terraform to map real-world resources to your configuration and keep track of metadata.
 
 ## Why is State Important?
@@ -52,14 +52,14 @@ This configuration stores the state in an S3 bucket.
 
 ## Now, Let's proceed to the Lab.
 
-## 🛠️ Pre-Requisites
+## Pre-Requisites
 * Terraform Installed
 * AWS CLI Installed
 * AWS IAM User with Programmatic Access (Access Key + Secret Key) & with proper S3 permissions.
 * Basic knowledge from [01-Terraform-AWS---How-to-Start](https://github.com/PravashB/01-Terraform-AWS---How-to-Start.git)
 * An Existing S3 Bucket (I'll explain why?)
 
-# 📦 Lab Structure
+# Lab Structure
 ```
 02-Terraform-AWS---Remote-State-S3/
 │
@@ -115,7 +115,7 @@ terraform {
   }
 }
 ```
-> ⚡ Important: We've **Hardcoded** bucket name here, because Terraform needs it before the S3 bucket resource is created. We'll understand the purpose in sometime.
+> Important: We've **Hardcoded** bucket name here, because Terraform needs it before the S3 bucket resource is created. We'll understand the purpose in sometime.
 ```
 #outputs.tf
 output "bucket_name" {
@@ -132,11 +132,11 @@ So, we got an error.
 
 This brings us to a very important concept. A li'l deviation. But trust me, it's worth it.
 
-## 🛑 Very Important Concept - Bootstrap Project
+## Very Important Concept - Bootstrap Project
 
 > This is a famous terraform **"Chicken-and-egg"** problem.
 
-**🧠 Why didn't we face this earlier?**
+**Why didn't we face this earlier?**
 
 In the first lab, we were using local state (terraform.tfstate in your local folder).
 Now, you’re moving to remote state, where Terraform must interact with an external system (S3), and it cannot dynamically create S3 buckets on its own during `terraform init.`.
@@ -158,9 +158,9 @@ Backend must exist before `terraform init`. No way around it.
 Bootstrap project creation is the professional solution. And we'll see that in another lab.
 
 ## Step 4: Manually Create an S3 bucket:
-- ✅ Go to AWS Console ➔ S3 ➔ Create Bucket ➔ Name: terraform-remote-state-pro-lab.
-- ✅ Done!
-- ✅ Then terraform init will work fine.
+- Go to AWS Console ➔ S3 ➔ Create Bucket ➔ Name: terraform-remote-state-pro-lab.
+- Done!
+- Then terraform init will work fine.
  ![alt text](/Images/image-3.png)
 
 ## Step 5: Commands to Run
