@@ -153,7 +153,7 @@ There are two standard ways:
 1. Bootstrap Project. (For Teams & Production - Professional way)
 2. Manual Creation. (For small projects and labs - For now)
 
->**⚡ In short:**
+>** In short:**
 Backend must exist before `terraform init`. No way around it.
 Bootstrap project creation is the professional solution. And we'll see that in another lab.
 
